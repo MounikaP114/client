@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 function StopwatchComponent() {
-  const [time,  setTime]=useState(0)
+  const [time,  setTime]=useState(3600000)
   const [laps,  setLaps]=useState([])
   const [running, setRunning]=useState(false)
 
@@ -36,7 +36,7 @@ function StopwatchComponent() {
     <>
     <center style={{marginTop:'260px'}}>
     <div>
-        <spamn>{("0"+Math.floor((time/(3600000))%24)).slice(-2)}:</spamn>
+        <spamn>{("0"+Math.floor((time/3600000)%24)).slice(-2)}:</spamn>
         <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}.</span>
         <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
@@ -51,6 +51,7 @@ function StopwatchComponent() {
       <ul>
         {laps.map((lap, index) => (
           <li key={index}>
+            {("0" + Math.floor((lap / 3600000) % 24)).slice(-2)}:
             {("0" + Math.floor((lap / 60000) % 60)).slice(-2)}:
             {("0" + Math.floor((lap / 1000) % 60)).slice(-2)}.
             {("0" + ((lap / 10) % 100)).slice(-2)}
