@@ -36,15 +36,18 @@ function StopwatchComponent() {
     <>
     <center style={{marginTop:'260px'}}>
     <div>
+        <spamn>{("0"+Math.floor((time/(3600000))%24)).slice(-2)}:</spamn>
         <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span>
         <span>{("0" + Math.floor((time / 1000) % 60)).slice(-2)}.</span>
         <span>{("0" + ((time / 10) % 100)).slice(-2)}</span>
       </div>
-      <button onClick={() => setRunning(!running)}>
-      {running ? 'Stop' : 'Start'}</button>
+
+      <button onClick={() => setRunning(!running)}> {running ? 'Stop' : 'Start'}</button>
+
       <button onClick={handleLaps}>Leap</button>
       <button onClick={handleReset}>Reset</button>
       <button onClick={handleSave}>Save</button>
+
       <ul>
         {laps.map((lap, index) => (
           <li key={index}>
